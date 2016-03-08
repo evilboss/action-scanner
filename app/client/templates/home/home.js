@@ -1,29 +1,38 @@
+let state = new ReactiveDict('');
+
 Template.home.helpers({
-  //add you helpers here
+  message: function () {
+    return state.get('message');
+  }
 });
 
-Template.home.events({
-  //add your events here
-});
+Template.home.events({});
 
 Template.home.onCreated(function () {
-  //add your statement here
+
 });
+Template.home.created = function () {
+
+};
 
 Template.home.onRendered(function () {
-  if(Meteor.isCordova){
+  if (Meteor.isCordova) {
     Meteor.startup(function () {
-
       cordova.plugins.barcodeScanner.scan(
         function (result) {
-
-          alert("We got a barcode\n" +
-            "Result: " + result.text + "\n" +
-            "Format: " + result.format + "\n" +
-            "Cancelled: " + result.cancelled);
+          console.log(result.text);
+          if(result.text.includes('actiontag.io')){
+            state.set('message', 'Succss');
+          }
         },
         function (error) {
-          alert("Scanning failed: " + error);
+          console.log("Scanning failed: " + error);
+          state.set('message', 'Failed');
+        },
+        {
+          "preferFrontCamera": false,
+          "showFlipCameraButton": true,
+          "prompt": "Place an action-tag inside the scan area"
         }
       );
     });
