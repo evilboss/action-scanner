@@ -15,10 +15,13 @@ tracker                 # Meteor's client-side reactive programming library
 standard-minifiers      # JS/CSS minifiers run for production mode
 es5-shim                # ECMAScript 5 compatibility for older browsers.
 ecmascript              # Enable ECMAScript2015+ syntax in app code
-
-autopublish             # Publish all data to the clients (for prototyping)
-insecure                # Allow all DB writes from clients (for prototyping)
+reactive-dict           # This package provide ReactiveDict, a general-purpose reactive datatype for use with tracker. It provides all of the functionality of the Session object documented in the main Meteor docs, such as reactive get, set, and equals functions.
 
 
+
+kadira:dochead          # DocHead is an isomorphic way to manipulate document.head for Meteor apps.
 kadira:flow-router      # FlowRouter is a very simple router for Meteor. It does routing for client-side apps and does not handle rendering itself.
 kadira:blaze-layout     # This is a layout manager designed for Blaze. This is built to use with FlowRouter but, this can be used without FlowRouter too. This is a very simple layout manager.
+
+agustino:purecss             # Pure, a set of small, responsive CSS modules that you can use in every web project, packaged for Meteor.
+
