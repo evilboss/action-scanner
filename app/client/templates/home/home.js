@@ -1,5 +1,28 @@
 let state = new ReactiveDict('');
+let parseUrl = function (url) {
+  parser = url.split('/');
+  let tagId;
+  _.each(parser, function (urlItem) {
+    if (urlItem.length == 36) {
+      tagId = urlItem;
+    }
+  });
+  return tagId;
+}
+let getTagId = function (result) {
+  if (result.text.includes('actiontag.io')) {
+    let tagId = parseUrl(result.text);
+    if (tagId) {
+      state.set('message', 'Success');
+    } else {
+      state.set('message', 'Action Tag not found');
+    }
+    return tagId;
+  }
+}
+let callActionTag = function (tagId) {
 
+}
 Template.home.helpers({
   message: function () {
     return state.get('message');
@@ -20,10 +43,8 @@ Template.home.onRendered(function () {
     Meteor.startup(function () {
       cordova.plugins.barcodeScanner.scan(
         function (result) {
-          console.log(result.text);
-          if(result.text.includes('actiontag.io')){
-            state.set('message', 'Succss');
-          }
+          let tagId = getTagId(result);
+
         },
         function (error) {
           console.log("Scanning failed: " + error);
