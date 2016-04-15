@@ -24,4 +24,7 @@ kadira:flow-router      # FlowRouter is a very simple router for Meteor. It does
 kadira:blaze-layout     # This is a layout manager designed for Blaze. This is built to use with FlowRouter but, this can be used without FlowRouter too. This is a very simple layout manager.
 
 agustino:purecss             # Pure, a set of small, responsive CSS modules that you can use in every web project, packaged for Meteor.
+froatsnook:request      # A Simplified HTTP client which supports retrieving binary data
+hybrid:assets
+
 

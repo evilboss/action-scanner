@@ -1,0 +1,7 @@
+{
+    "appIcons": {
+        "source": "private/action-scan-logo-blue.png",
+        "output": "resources/icons/",
+        "type": ["android"]
+    }
+}

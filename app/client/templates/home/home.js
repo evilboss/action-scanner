@@ -20,9 +20,12 @@ let getTagId = function (result) {
     return tagId;
   }
 }
-let callActionTag = function (tagId) {
+let callAction = function (url) {
+  console.log('Reading posts');
+
 
 }
+
 Template.home.helpers({
   message: function () {
     return state.get('message');
@@ -39,12 +42,25 @@ Template.home.created = function () {
 };
 
 Template.home.onRendered(function () {
+
+  let url = 'http://www.actiontag.io/api/82d59db7-61b1-4d4d-88fe-05f8a832bd3a.json';
+  var xhr = new XMLHttpRequest();
+  xhr.open("GET", url, true);
+  xhr.onreadystatechange = function() {
+    if (xhr.readyState == 4) {
+      console.log(xhr.responseText);
+    }
+  }
+  xhr.send();
   if (Meteor.isCordova) {
+
+
+
     Meteor.startup(function () {
+      console.log('cordova started!');
       cordova.plugins.barcodeScanner.scan(
         function (result) {
           let tagId = getTagId(result);
-
         },
         function (error) {
           console.log("Scanning failed: " + error);
